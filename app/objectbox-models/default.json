@@ -1,0 +1,503 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:5901580801525539540",
+      "lastPropertyId": "15:3839357262024737295",
+      "name": "Country",
+      "properties": [
+        {
+          "id": "1:7896878111632710379",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:343010098087300050",
+          "name": "alpha2Code",
+          "type": 9
+        },
+        {
+          "id": "3:6946391873276017970",
+          "name": "alpha3Code",
+          "type": 9
+        },
+        {
+          "id": "4:7278745514103065408",
+          "name": "area",
+          "type": 8,
+          "flags": 2
+        },
+        {
+          "id": "5:7526263348239089693",
+          "name": "capital",
+          "type": 9
+        },
+        {
+          "id": "6:282870115206724114",
+          "name": "cioc",
+          "type": 9
+        },
+        {
+          "id": "7:7359547888302437739",
+          "name": "demonym",
+          "type": 9
+        },
+        {
+          "id": "8:2168772047946838368",
+          "name": "flag",
+          "type": 9
+        },
+        {
+          "id": "9:4949712001180254543",
+          "name": "gini",
+          "type": 8,
+          "flags": 2
+        },
+        {
+          "id": "10:7345311209466483507",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "11:2095117411602694353",
+          "name": "nativeName",
+          "type": 9
+        },
+        {
+          "id": "12:3454702159437895116",
+          "name": "numericCode",
+          "type": 9
+        },
+        {
+          "id": "13:2915407507541190176",
+          "name": "population",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "14:6604855490535104299",
+          "name": "region",
+          "type": 9
+        },
+        {
+          "id": "15:3839357262024737295",
+          "name": "subRegion",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:1557164728985157899",
+          "name": "currencies",
+          "targetId": "9:5740177138517308328"
+        },
+        {
+          "id": "2:8609322430900386538",
+          "name": "languages",
+          "targetId": "12:6692138821578488448"
+        },
+        {
+          "id": "3:4063224024255339852",
+          "name": "regionalBlocs",
+          "targetId": "10:8393778596724046001"
+        }
+      ]
+    },
+    {
+      "id": "2:8215433135257606937",
+      "lastPropertyId": "3:437366396124865601",
+      "name": "Border",
+      "properties": [
+        {
+          "id": "1:1536825910591221939",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:457207910313001553",
+          "name": "countryName",
+          "type": 9
+        },
+        {
+          "id": "3:437366396124865601",
+          "name": "countryId",
+          "indexId": "1:4634138909883172446",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Country"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:7106663340830552943",
+      "lastPropertyId": "3:3970548049299892901",
+      "name": "CallingCode",
+      "properties": [
+        {
+          "id": "1:8833907476203723696",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1220424697728014954",
+          "name": "code",
+          "type": 9
+        },
+        {
+          "id": "3:3970548049299892901",
+          "name": "countryId",
+          "indexId": "2:3867794100738583208",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Country"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:1622270555132966356",
+      "lastPropertyId": "12:1481995040520676501",
+      "name": "Translation",
+      "properties": [
+        {
+          "id": "1:1329183546143862780",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2930152525969709444",
+          "name": "br",
+          "type": 9
+        },
+        {
+          "id": "3:4544518071058068266",
+          "name": "de",
+          "type": 9
+        },
+        {
+          "id": "4:8820681427046903455",
+          "name": "es",
+          "type": 9
+        },
+        {
+          "id": "5:8793305140885116888",
+          "name": "fa",
+          "type": 9
+        },
+        {
+          "id": "6:3470936855393994905",
+          "name": "fr",
+          "type": 9
+        },
+        {
+          "id": "7:3391117865833183700",
+          "name": "hr",
+          "type": 9
+        },
+        {
+          "id": "8:5253135354812183667",
+          "name": "it",
+          "type": 9
+        },
+        {
+          "id": "9:3484419051996508669",
+          "name": "ja",
+          "type": 9
+        },
+        {
+          "id": "10:4787699731541557848",
+          "name": "nl",
+          "type": 9
+        },
+        {
+          "id": "11:4615226264341794637",
+          "name": "pt",
+          "type": 9
+        },
+        {
+          "id": "12:1481995040520676501",
+          "name": "countryId",
+          "indexId": "3:4055064593264023782",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Country"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:2194472351144977093",
+      "lastPropertyId": "3:3787807217055728961",
+      "name": "OtherAcronym",
+      "properties": [
+        {
+          "id": "1:5226422169035456935",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:9176073371035295634",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:3787807217055728961",
+          "name": "regionalBlocId",
+          "indexId": "4:3311647305256527718",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "RegionalBloc"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:8122920849867631548",
+      "lastPropertyId": "3:5213143103932431709",
+      "name": "TimeZone",
+      "properties": [
+        {
+          "id": "1:6078132847138730073",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8767320936020932654",
+          "name": "time",
+          "type": 9
+        },
+        {
+          "id": "3:5213143103932431709",
+          "name": "countryId",
+          "indexId": "5:3037088947090322815",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Country"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "7:8408267940778435290",
+      "lastPropertyId": "3:3332208117321359468",
+      "name": "Spelling",
+      "properties": [
+        {
+          "id": "1:301374877090338099",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6211550142048914171",
+          "name": "spell",
+          "type": 9
+        },
+        {
+          "id": "3:3332208117321359468",
+          "name": "countryId",
+          "indexId": "6:8963035012149206095",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Country"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "8:4493815312773759749",
+      "lastPropertyId": "3:3333009881531110714",
+      "name": "OtherNames",
+      "properties": [
+        {
+          "id": "1:1784254216323112253",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:9179920861604868518",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:3333009881531110714",
+          "name": "regionalBlocId",
+          "indexId": "7:4247596512340324500",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "RegionalBloc"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "9:5740177138517308328",
+      "lastPropertyId": "4:6791358483114813208",
+      "name": "Currency",
+      "properties": [
+        {
+          "id": "1:3722999595055580007",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4769407626795389600",
+          "name": "code",
+          "type": 9
+        },
+        {
+          "id": "3:693076886601970492",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:6791358483114813208",
+          "name": "symbol",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "10:8393778596724046001",
+      "lastPropertyId": "3:5938357590213590239",
+      "name": "RegionalBloc",
+      "properties": [
+        {
+          "id": "1:2757024645848293663",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5905519637932314683",
+          "name": "acronym",
+          "type": 9
+        },
+        {
+          "id": "3:5938357590213590239",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "11:1608356213040196449",
+      "lastPropertyId": "4:8309523755152886380",
+      "name": "Coordinate",
+      "properties": [
+        {
+          "id": "1:2859371370907962848",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6976418668786991293",
+          "name": "lat",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "3:5327757936030702403",
+          "name": "lng",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "4:8309523755152886380",
+          "name": "countryId",
+          "indexId": "8:4124258902009480419",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Country"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "12:6692138821578488448",
+      "lastPropertyId": "5:7073721468922070101",
+      "name": "Language",
+      "properties": [
+        {
+          "id": "1:7160663753917716914",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3007369080151739235",
+          "name": "iso6391",
+          "type": 9
+        },
+        {
+          "id": "3:3089601981549373651",
+          "name": "iso6392",
+          "type": 9
+        },
+        {
+          "id": "4:3691613550502167182",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "5:7073721468922070101",
+          "name": "nativeName",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "13:312203058712552898",
+      "lastPropertyId": "3:3532312108154274139",
+      "name": "Domain",
+      "properties": [
+        {
+          "id": "1:8393784705126308162",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6771515312844716669",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:3532312108154274139",
+          "name": "countryId",
+          "indexId": "9:6153106726694882487",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Country"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "13:312203058712552898",
+  "lastIndexId": "9:6153106726694882487",
+  "lastRelationId": "3:4063224024255339852",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
