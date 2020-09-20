@@ -7,7 +7,7 @@ import io.objectbox.relation.ToOne
 @Entity
 data class Border(
     @Id var id: Long = 0,
-    var countryName: String
+    var countryName: String? = null
 ) {
 
     lateinit var country: ToOne<Country>

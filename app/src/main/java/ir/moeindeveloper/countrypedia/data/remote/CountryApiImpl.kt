@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class CountryApiImpl @Inject constructor(private val service: CountryApiService): CountryApiHelper {
 
-    override suspend fun getCountries(): NetworkResponse<Countries, Nothing> = service.getCountries()
+    override suspend fun getCountries(): NetworkResponse<Countries, Countries> = service.getCountries()
 
 }

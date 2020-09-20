@@ -8,6 +8,6 @@ object Constants {
 
     object SharedPreferences {
         const val isSavedKey: String = "is_saved"
-
+        const val prefs_key: String = "countryPedia"
     }
 }

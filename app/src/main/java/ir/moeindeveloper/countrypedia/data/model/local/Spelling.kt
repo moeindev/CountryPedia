@@ -7,7 +7,7 @@ import io.objectbox.relation.ToOne
 @Entity
 data class Spelling(
     @Id var id: Long = 0,
-    var spell: String
+    var spell: String? = null
 ) {
     lateinit var country: ToOne<Country>
 }

@@ -8,6 +8,6 @@ import retrofit2.http.GET
 interface CountryApiService {
 
     @GET(Constants.ApiEndPoints.all)
-    suspend fun getCountries(): NetworkResponse<Countries,Nothing>
+    suspend fun getCountries(): NetworkResponse<Countries,Countries>
 
 }

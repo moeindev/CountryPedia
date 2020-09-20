@@ -6,8 +6,8 @@ import io.objectbox.relation.ToOne
 
 @Entity
 class TimeZone(
-    @Id var id: Long,
-    var time: String
+    @Id var id: Long = 0,
+    var time: String? = null
 ) {
 
     lateinit var country: ToOne<Country>

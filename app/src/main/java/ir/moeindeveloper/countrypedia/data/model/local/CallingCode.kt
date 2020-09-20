@@ -6,8 +6,8 @@ import io.objectbox.relation.ToOne
 
 @Entity
 data class CallingCode(
-    @Id var id: Long,
-    var code: String
+    @Id var id: Long = 0,
+    var code: String? = null
 ) {
 
     lateinit var country: ToOne<Country>

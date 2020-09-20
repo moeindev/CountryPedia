@@ -8,8 +8,8 @@ import io.objectbox.relation.ToMany
 @Entity
 data class RegionalBloc(
     @Id var id: Long = 0,
-    var acronym: String,
-    var name: String
+    var acronym: String? = null,
+    var name: String? = null
 ) {
     @Backlink
     lateinit var otherAcronyms: ToMany<OtherAcronym>

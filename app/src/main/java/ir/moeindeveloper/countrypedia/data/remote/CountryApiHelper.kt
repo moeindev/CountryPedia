@@ -5,6 +5,6 @@ import ir.moeindeveloper.countrypedia.data.model.remote.Countries
 
 interface CountryApiHelper {
 
-    suspend fun getCountries(): NetworkResponse<Countries, Nothing>
+    suspend fun getCountries(): NetworkResponse<Countries, Countries>
 
 }

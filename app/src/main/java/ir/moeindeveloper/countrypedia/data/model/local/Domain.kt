@@ -7,7 +7,7 @@ import io.objectbox.relation.ToOne
 @Entity
 data class Domain(
     @Id var id: Long = 0,
-    var name: String
+    var name: String? = null
 ) {
 
     lateinit var country: ToOne<Country>

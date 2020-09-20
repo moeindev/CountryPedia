@@ -171,10 +171,4 @@ dependencies {
     implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
     implementation 'com.jakewharton.rxbinding4:rxbinding-material:4.0.0'
 
-
-    //objectBox:
-    def objectboxVersion = '2.7.1'
-    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
-    releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
-
 }

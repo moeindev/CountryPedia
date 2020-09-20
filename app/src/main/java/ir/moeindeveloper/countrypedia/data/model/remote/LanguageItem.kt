@@ -3,6 +3,7 @@ package ir.moeindeveloper.countrypedia.data.model.remote
 
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import ir.moeindeveloper.countrypedia.data.model.local.Language
 
 @Keep
 data class LanguageItem(
@@ -14,4 +15,7 @@ data class LanguageItem(
     val name: String,
     @SerializedName("nativeName")
     val nativeName: String
-)
+) {
+
+    fun getAsLanguage(): Language = Language(iso6391 = iso6391, iso6392 = iso6392, name = name, nativeName = nativeName)
+}

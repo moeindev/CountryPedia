@@ -7,16 +7,16 @@ import io.objectbox.relation.ToOne
 @Entity
 data class Translation(
     @Id var id: Long = 0,
-    var br: String,
-    var de: String,
-    var es: String,
-    var fa: String,
-    var fr: String,
-    var hr: String,
-    var it: String,
-    var ja: String,
-    var nl: String,
-    var pt: String
+    var br: String? = null,
+    var de: String? = null,
+    var es: String? = null,
+    var fa: String? = null,
+    var fr: String? = null,
+    var hr: String? = null,
+    var it: String? = null,
+    var ja: String? = null,
+    var nl: String? = null,
+    var pt: String? = null
 ) {
     lateinit var country: ToOne<Country>
 }

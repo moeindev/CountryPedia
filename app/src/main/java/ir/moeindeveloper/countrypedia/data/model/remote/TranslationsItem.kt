@@ -3,6 +3,7 @@ package ir.moeindeveloper.countrypedia.data.model.remote
 
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import ir.moeindeveloper.countrypedia.data.model.local.Translation
 
 @Keep
 data class TranslationsItem(
@@ -26,4 +27,12 @@ data class TranslationsItem(
     val nl: String,
     @SerializedName("pt")
     val pt: String
-)
+) {
+
+    fun getAsTranslation(): Translation =
+        Translation(br = br,de = de,
+            es = es,fa = fa,
+            fr = fr,hr = hr,
+            it = it,ja = ja,
+            nl = nl,pt = pt)
+}

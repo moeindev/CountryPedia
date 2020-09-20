@@ -6,8 +6,8 @@ import io.objectbox.relation.ToOne
 
 @Entity
 class OtherAcronym(
-    @Id var id: Long,
-    var name: String
+    @Id var id: Long = 0,
+    var name: String? = null
 ) {
 
     lateinit var regionalBloc: ToOne<RegionalBloc>

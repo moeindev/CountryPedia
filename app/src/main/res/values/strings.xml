@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CountryPedia</string>
+    <string name="error_network">Please check your internet connection</string>
+    <string name="error_unknown">Unknown error!</string>
+    <string name="error_server">Server error!</string>
 </resources>
