@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="15dp"
+    android:layout_margin="10dp"
     style="@style/AppTheme.item.home.card"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_home_height">
@@ -40,7 +40,7 @@
             android:layout_margin="5dp"
             tools:text="@string/app_name"
             style="@style/AppTheme.item.home.subtitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

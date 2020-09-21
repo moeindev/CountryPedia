@@ -21,9 +21,9 @@ class CountryRepository @Inject constructor(private val helper: CountryApiHelper
                                             private val appConfig: AppConfig) {
 
 
-    fun getCountries(): Flow<Resource<List<Country>>> {
+    fun getCountries(shouldEmitLoading: Boolean = true): Flow<Resource<List<Country>>> {
         return flow {
-            emit(Resource.loading(null))
+            if (shouldEmitLoading) emit(Resource.loading(null))
             if (appConfig.isSaved) {
                 //load from db:
                 emit(Resource.success(getCountryList()))

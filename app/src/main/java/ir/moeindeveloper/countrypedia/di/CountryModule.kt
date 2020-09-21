@@ -2,6 +2,9 @@ package ir.moeindeveloper.countrypedia.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.util.CoilUtils
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -14,6 +17,7 @@ import ir.moeindeveloper.countrypedia.data.local.database.ObjectBox
 import ir.moeindeveloper.countrypedia.data.remote.CountryApiHelper
 import ir.moeindeveloper.countrypedia.data.remote.CountryApiImpl
 import ir.moeindeveloper.countrypedia.data.remote.CountryApiService
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -50,5 +54,20 @@ class CountryModule {
     @Singleton
     fun providesApiHelper(apiImpl: CountryApiImpl): CountryApiHelper = apiImpl
 
+
+    @Provides
+    @Singleton
+    fun providesImageLoader(@ApplicationContext context: Context): ImageLoader {
+        return ImageLoader.Builder(context)
+            .okHttpClient {
+                OkHttpClient.Builder()
+                    .cache(CoilUtils.createDefaultCache(context))
+                    .build()
+            }
+            .componentRegistry {
+                add(SvgDecoder(context))
+            }
+            .build()
+    }
 
 }

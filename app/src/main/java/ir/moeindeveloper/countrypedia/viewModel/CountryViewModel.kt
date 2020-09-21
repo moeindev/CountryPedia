@@ -17,9 +17,9 @@ class CountryViewModel @ViewModelInject constructor(private val repository: Coun
     val countries: LiveData<Resource<List<Country>>> get() = _countries
 
 
-    fun loadCountries() {
+    fun loadCountries(shouldEmitLoading: Boolean = true) {
         viewModelScope.launch {
-            repository.getCountries()
+            repository.getCountries(shouldEmitLoading)
                 .collect {
                     _countries.value = it
                 }
