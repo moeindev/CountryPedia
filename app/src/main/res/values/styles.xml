@@ -76,4 +76,32 @@
         <item name="android:autoSizeMinTextSize" tools:ignore="NewApi">12sp</item>
         <item name="android:autoSizeMaxTextSize" tools:ignore="NewApi">14sp</item>
     </style>
+
+
+    <style name="AppTheme.detail.title" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/avenir</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:autoSizeMinTextSize" tools:ignore="NewApi">18sp</item>
+        <item name="android:autoSizeMaxTextSize" tools:ignore="NewApi">20sp</item>
+    </style>
+
+    <style name="AppTheme.detail.detail" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/avenir</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:autoSizeMinTextSize" tools:ignore="NewApi">16sp</item>
+        <item name="android:autoSizeMaxTextSize" tools:ignore="NewApi">18sp</item>
+    </style>
+
+    <style name="AppTheme.detail.card" parent="Widget.MaterialComponents.CardView">
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="elevation">0dp</item>
+        <item name="android:radius">5dp</item>
+        <item name="cardPreventCornerOverlap">false</item>
+        <item name="android:clickable">true</item>
+    </style>
 </resources>

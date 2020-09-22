@@ -1,10 +1,12 @@
 package ir.moeindeveloper.countrypedia.data.model.local
 
+import android.os.Parcelable
 import io.objectbox.annotation.Backlink
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.relation.ToMany
 import io.objectbox.relation.ToOne
+import java.io.Serializable
 
 @Entity
 data class Country(
@@ -37,7 +39,7 @@ data class Country(
    var region: String? = null,
    //21
    var subRegion: String? = null
-) {
+): Serializable {
 
     //3
     @Backlink

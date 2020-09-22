@@ -3,4 +3,6 @@
     <dimen name="item_home_height">140dp</dimen>
     <dimen name="item_home_image_height">100dp</dimen>
     <dimen name="item_home_image_width">100dp</dimen>
+
+    <dimen name="detail_image_height">270dp</dimen>
 </resources>

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.ImageLoader
 import com.jakewharton.rxbinding4.widget.textChangeEvents
@@ -15,7 +17,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ir.moeindeveloper.countrypedia.R
+import ir.moeindeveloper.countrypedia.data.local.Constants
 import ir.moeindeveloper.countrypedia.data.model.local.Country
+import ir.moeindeveloper.countrypedia.data.model.view.SharedElement
 import ir.moeindeveloper.countrypedia.databinding.FragmentHomeBinding
 import ir.moeindeveloper.countrypedia.ui.adapter.CountryAdapter
 import ir.moeindeveloper.countrypedia.util.network.State
@@ -55,6 +59,11 @@ class HomeFragment : Fragment(),CountryAdapter.CountryCallback {
                 loadData(false)
             }
 
+            noConnectionLayout.tryAgainButton.setOnClickListener {
+                loadData(true)
+            }
+
+
             homeLayout.homeSearchTEdit.textChangeEvents()
                 .skipInitialValue()
                 .debounce(300, TimeUnit.MILLISECONDS)
@@ -92,14 +101,25 @@ class HomeFragment : Fragment(),CountryAdapter.CountryCallback {
     }
 
 
-    override fun onSelect(country: Country) {
-        //TODO country selected
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        binding.homeLayout.homeCountryList.apply {
+            postponeEnterTransition()
+            viewTreeObserver.addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
+        }
+        loadData(true)
+    }
+    override fun onSelect(country: Country, sharedElement: SharedElement) {
+        val directions = HomeFragmentDirections.detailFragment(country)
+        val extras = FragmentNavigatorExtras(
+            sharedElement.imageView to Constants.SharedElements.getTransitionName(Constants.SharedElements.image,country.id),
+            sharedElement.titleView to Constants.SharedElements.getTransitionName(Constants.SharedElements.title,country.id)
+        )
+        findNavController().navigate(directions,extras)
     }
 
     private fun loadData(emitLoading: Boolean) = viewModel.loadCountries(emitLoading)
-
-    override fun onResume() {
-        super.onResume()
-        loadData(true)
-    }
 }

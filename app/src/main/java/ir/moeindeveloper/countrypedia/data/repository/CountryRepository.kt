@@ -9,7 +9,9 @@ import ir.moeindeveloper.countrypedia.data.model.local.Country
 import ir.moeindeveloper.countrypedia.data.model.remote.CountryItem
 import ir.moeindeveloper.countrypedia.data.remote.CountryApiHelper
 import ir.moeindeveloper.countrypedia.util.network.Resource
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -62,7 +64,6 @@ class CountryRepository @Inject constructor(private val helper: CountryApiHelper
             db.saveToDatabase(country.getOtherAcronyms())
             db.saveToDatabase(country.getOtherNames())
         }
-        //TODO uncomment this for offline testing:
         appConfig.isSaved = true
     }
 

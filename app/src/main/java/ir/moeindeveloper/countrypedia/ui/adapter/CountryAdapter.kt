@@ -4,13 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.load
 import coil.request.CachePolicy
 import ir.moeindeveloper.countrypedia.R
+import ir.moeindeveloper.countrypedia.data.local.Constants
 import ir.moeindeveloper.countrypedia.data.model.local.Country
+import ir.moeindeveloper.countrypedia.data.model.view.SharedElement
 import ir.moeindeveloper.countrypedia.databinding.ItemCountryBinding
 import ir.moeindeveloper.countrypedia.util.ui.CountryDiffCallback
 import java.util.*
@@ -45,20 +48,26 @@ class CountryAdapter(private val callback: CountryCallback, private val imgLoade
             binding.apply {
                 root.setOnClickListener {
                     //call the callback
-                    callback.onSelect(filteredItems.currentList[adapterPosition])
+                    callback.onSelect(filteredItems.currentList[adapterPosition], SharedElement(itemHomeImage, itemHomeTitle))
                 }
             }
         }
 
         fun bindCountry(country: Country) {
             binding.apply {
+                ViewCompat.setTransitionName(itemHomeImage,
+                    Constants.SharedElements.getTransitionName(Constants.SharedElements.image, country.id))
+                ViewCompat.setTransitionName(itemHomeTitle,
+                    Constants.SharedElements.getTransitionName(Constants.SharedElements.title, country.id))
+
                 itemHomeTitle.text = country.name
                 itemHomeRegion.text = country.region
                 itemHomeImage.load(country.flag,imgLoader){
-                    crossfade(true)
+                    crossfade(false)
+                    allowHardware(false)
                     placeholder(R.drawable.ic_app_icon)
                     error(R.drawable.ic_broken_photo)
-                    diskCachePolicy(CachePolicy.ENABLED)
+                    //diskCachePolicy(CachePolicy.ENABLED)
                 }
             }
         }
@@ -88,6 +97,6 @@ class CountryAdapter(private val callback: CountryCallback, private val imgLoade
     }
 
     interface CountryCallback {
-        fun onSelect(country: Country)
+        fun onSelect(country: Country,sharedElement: SharedElement)
     }
 }

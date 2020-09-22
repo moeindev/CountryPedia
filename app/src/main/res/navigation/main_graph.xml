@@ -9,5 +9,23 @@
         android:id="@+id/homeFragment"
         android:name="ir.moeindeveloper.countrypedia.ui.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/detail_fragment"
+            app:destination="@id/countryDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/countryDetailFragment"
+        android:name="ir.moeindeveloper.countrypedia.ui.fragment.CountryDetailFragment"
+        android:label="fragment_country_detail"
+        tools:layout="@layout/fragment_country_detail" >
+        <argument
+            android:name="country"
+            app:argType="ir.moeindeveloper.countrypedia.data.model.local.Country" />
+    </fragment>
 </navigation>

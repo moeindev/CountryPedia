@@ -40,7 +40,7 @@ data class CountryItem(
     @SerializedName("nativeName")
     val nativeName: String? = null,
     @SerializedName("numericCode")
-    val numericCode: String?? = null,
+    val numericCode: String? = null,
     @SerializedName("population")
     val population: Int? = null,
     @SerializedName("region")

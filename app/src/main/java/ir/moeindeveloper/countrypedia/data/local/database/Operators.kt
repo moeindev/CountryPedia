@@ -7,13 +7,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 inline fun <reified T: Any> BoxStore.saveToDatabase(data: List<T>) {
-    CoroutineScope(Dispatchers.IO).launch {
-        boxFor<T>().put(data)
-    }
+    boxFor<T>().put(data)
 }
 
 inline fun <reified T: Any> BoxStore.saveToDatabase(data: T) {
-    CoroutineScope(Dispatchers.IO).launch {
-        boxFor<T>().put(data)
-    }
+    boxFor<T>().put(data)
 }
