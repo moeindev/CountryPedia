@@ -20,4 +20,4 @@ Mockk | https://mockk.io/
 Truth | https://github.com/google/truth
 
 
-### Download the release APK: [HERE](https://github.com/moeindev/CountryPedia/blob/add_readme/readmeSources/app-release.apk)
+### Download the release APK: [HERE](https://github.com/moeindev/CountryPedia/blob/master/app/release/app-release.apk)
