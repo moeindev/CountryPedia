@@ -173,5 +173,8 @@ dependencies {
 
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
+
+    //leak canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 }
 apply plugin: 'io.objectbox'
