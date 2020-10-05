@@ -9,4 +9,12 @@
     <string name="detail_capital">Capital: </string>
     <string name="detail_population">Population: </string>
     <string name="detail_code">Code: </string>
+
+    <string name="item_example_title">آخرین خبر</string>
+
+    <string name="item_example_desc">تصویر</string>
+
+    <string name="item_example_counter">10</string>
+
+    <string name="item_example_time">الان</string>
 </resources>

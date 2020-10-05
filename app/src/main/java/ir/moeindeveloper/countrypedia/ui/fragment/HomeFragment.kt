@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,19 +18,25 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ir.moeindeveloper.countrypedia.R
+import ir.moeindeveloper.countrypedia.core.intent.UserIntent
+import ir.moeindeveloper.countrypedia.core.state.CountryViewState
 import ir.moeindeveloper.countrypedia.data.local.Constants
 import ir.moeindeveloper.countrypedia.data.model.local.Country
 import ir.moeindeveloper.countrypedia.data.model.view.SharedElement
 import ir.moeindeveloper.countrypedia.databinding.FragmentHomeBinding
 import ir.moeindeveloper.countrypedia.ui.adapter.CountryAdapter
-import ir.moeindeveloper.countrypedia.util.network.State
+import ir.moeindeveloper.countrypedia.core.state.State
+import ir.moeindeveloper.countrypedia.core.view.CountryView
 import ir.moeindeveloper.countrypedia.util.ui.changeState
 import ir.moeindeveloper.countrypedia.viewModel.CountryViewModel
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(),CountryAdapter.CountryCallback {
+class HomeFragment : Fragment(),CountryAdapter.CountryCallback, CountryView<CountryViewState<List<Country>>> {
+
+
 
     private val viewModel by  viewModels<CountryViewModel>()
 
@@ -77,29 +84,33 @@ class HomeFragment : Fragment(),CountryAdapter.CountryCallback {
     }
 
     private fun observeViewModel(){
-        viewModel.countries.observe(viewLifecycleOwner, {res->
-            binding.changeState(res.status)
-            when(res.status){
-                State.LOADING -> {
-                    //do nothing here
-                }
-
-                State.SUCCESS -> {
-                    res.data?.let { list ->
-                        adapter.updateCountries(list)
-                    }
-                }
-
-                State.ERROR -> {
-                    res.MessageID?.let {msg->
-                        Toast.makeText(requireContext(),msg,Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
+        viewModel.state.observe(viewLifecycleOwner, {res->
+            render(res)
         })
+
 
     }
 
+    override fun render(state: CountryViewState<List<Country>>) {
+        binding.changeState(state.status)
+        when(state.status){
+            State.LOADING -> {
+                //do nothing here
+            }
+
+            State.SUCCESS -> {
+                state.data?.let { list ->
+                    adapter.updateCountries(list)
+                }
+            }
+
+            State.ERROR -> {
+                state.MessageID?.let {msg->
+                    Toast.makeText(requireContext(),msg,Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -121,5 +132,12 @@ class HomeFragment : Fragment(),CountryAdapter.CountryCallback {
         findNavController().navigate(directions,extras)
     }
 
-    private fun loadData(emitLoading: Boolean) = viewModel.loadCountries(emitLoading)
+    private fun loadData(emitLoading: Boolean) {
+        lifecycleScope.launch {
+            when(emitLoading){
+                true -> viewModel.intents.send(UserIntent.fetchCountries)
+                false -> viewModel.intents.send(UserIntent.realoadCountries)
+            }
+        }
+    }
 }
