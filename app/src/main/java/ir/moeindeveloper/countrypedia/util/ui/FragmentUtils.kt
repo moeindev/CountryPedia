@@ -2,7 +2,7 @@ package ir.moeindeveloper.countrypedia.util.ui
 
 import android.view.View
 import ir.moeindeveloper.countrypedia.databinding.FragmentHomeBinding
-import ir.moeindeveloper.countrypedia.util.network.State
+import ir.moeindeveloper.countrypedia.core.state.State
 
 fun FragmentHomeBinding.changeState(state: State) {
     when(state) {

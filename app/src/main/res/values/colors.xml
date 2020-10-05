@@ -7,4 +7,6 @@
 
     <color name="colorLoading">@color/colorPrimary</color>
 
+
+    <color name="colorBlue">#1ED837</color>
 </resources>

@@ -1,4 +1,4 @@
-package ir.moeindeveloper.countrypedia.util.network
+package ir.moeindeveloper.countrypedia.core.state
 
 enum class State {
     SUCCESS,

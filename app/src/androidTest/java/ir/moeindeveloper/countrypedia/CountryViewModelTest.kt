@@ -1,24 +1,17 @@
 package ir.moeindeveloper.countrypedia
 
-import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
-import io.objectbox.BoxStore
-import ir.moeindeveloper.countrypedia.data.local.preference.AppConfig
-import ir.moeindeveloper.countrypedia.data.remote.CountryApiHelper
 import ir.moeindeveloper.countrypedia.data.repository.CountryRepository
-import ir.moeindeveloper.countrypedia.util.network.Resource
-import ir.moeindeveloper.countrypedia.util.network.State
+import ir.moeindeveloper.countrypedia.core.state.CountryViewState
+import ir.moeindeveloper.countrypedia.core.state.State
 import ir.moeindeveloper.countrypedia.utils.MainCoroutineRule
 import ir.moeindeveloper.countrypedia.viewModel.CountryViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -51,43 +44,43 @@ class CountryViewModelTest {
     @Test
     fun given_loading_state() {
         //Given:
-        coEvery { repository.getCountries() } returns flow { emit(Resource.loading(null)) }
-        viewModel.countries.observeForever {  }
+        coEvery { repository.getCountries() } returns flow { emit(CountryViewState.loading(null)) }
+        viewModel.state.observeForever {  }
 
         //when:
         viewModel.loadCountries()
 
 
         //expecting:
-        assertThat(viewModel.countries.value?.status).isEqualTo(State.LOADING)
+        assertThat(viewModel.state.value?.status).isEqualTo(State.LOADING)
     }
 
     @Test
     fun given_error_state() {
         //Given:
-        coEvery { repository.getCountries() } returns flow { emit(Resource.error(data = null)) }
-        viewModel.countries.observeForever {  }
+        coEvery { repository.getCountries() } returns flow { emit(CountryViewState.error(data = null)) }
+        viewModel.state.observeForever {  }
 
         //when:
         viewModel.loadCountries()
 
 
         //expecting:
-        assertThat(viewModel.countries.value?.status).isEqualTo(State.ERROR)
+        assertThat(viewModel.state.value?.status).isEqualTo(State.ERROR)
     }
 
     @Test
     fun given_success_response() {
         //Given:
-        coEvery { repository.getCountries() } returns flow { emit(Resource.success(data = null)) }
-        viewModel.countries.observeForever {  }
+        coEvery { repository.getCountries() } returns flow { emit(CountryViewState.success(data = null)) }
+        viewModel.state.observeForever {  }
 
         //when:
         viewModel.loadCountries()
 
 
         //expecting:
-        assertThat(viewModel.countries.value?.status).isEqualTo(State.SUCCESS)
+        assertThat(viewModel.state.value?.status).isEqualTo(State.SUCCESS)
     }
 
 }
